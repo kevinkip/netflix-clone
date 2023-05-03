@@ -1,6 +1,11 @@
 import Input from "@/components/Input";
+import { useState } from "react";
 
 const Auth = () => {
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         //styling with tailwindcss
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -23,7 +28,28 @@ const Auth = () => {
                         </h2>
                         {/* hold our inputs */}
                         <div className="flex flex-col gap-4">
-                            <Input/>
+                            <Input
+                                label="Username"
+                                onChange={(ev: any) => setName(ev.target.value)}
+                                id="name"
+                                value={name}
+                            />
+                            <Input
+                                label="Email"
+                                onChange={(ev: any) => setEmail(ev.target.value)}
+                                id="email"
+                                type="email"
+                                value={email}
+                            />
+                            <Input
+                                label="Password"
+                                onChange={(ev: any) => setPassword(ev.target.value)}
+                                id="password"
+                                type="password"
+                                value={password}
+                            />
+
+                           
                         </div>
                     </div>
                 </div>
