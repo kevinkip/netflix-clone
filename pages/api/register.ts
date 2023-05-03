@@ -1,18 +1,21 @@
-import prismadb from '../../lib/prismadb';
+import prismadb from '@/lib/prismadb';
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if(req.method !== 'POST'){
-        return res.status(405).end();
-    }
+
     try {
+        if(req.method !== 'POST'){
+            return res.status(405).end();
+        }
+
         const { email, name, password } = req.body;
+
         const existingUser = await prismadb.user.findUnique({
             where: {
-                email,
+                 email
             }
-        });
+        })
 
         if (existingUser){
             return res.status(422).json({ error: 'Email taken' });
