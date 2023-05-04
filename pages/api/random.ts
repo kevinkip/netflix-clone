@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-       await serverAuth(req); 
+       await serverAuth(req, res); 
 
     // get the count of the movies in the db without loading them
        const movieCount = await prismadb.movie.count();
