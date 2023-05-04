@@ -2,6 +2,7 @@
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react';
 import Navbar from '@/components/Navbar';
+import Billboard from '@/components/Billboard';
 
 //checking if available session exists. If not, redirect us to /auth.
 export async function getServerSideProps(context: NextPageContext){
@@ -31,6 +32,8 @@ export default function Home() {
       {/* <h1 className="text-4xl text-green-500">Netflix Clone</h1>
       <p className='text-white'>Logged in as: {user?.email}</p>
       <button className='h-10 w-full bg-white' onClick={() => signOut()}>Logout!</button> */}
+    <Billboard />      
     </>
+
   )
 }
