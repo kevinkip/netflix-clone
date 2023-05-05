@@ -39,8 +39,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         //delete favorite movie
         if(req.method === 'DELETE'){
             const { currentUser } = await serverAuth(req, res);
-            //req.body won't work on a DELETE path.
-            const { movieId } = req.query;
+            //req.body won't work on a DELETE
+            const { movieId } = req.body;
 
             const existingMovie = await prismadb.movie.findUnique({
                 where: {
