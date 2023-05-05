@@ -6,6 +6,8 @@ import Billboard from '@/components/Billboard';
 import MovieList from '@/components/MovieList';
 import useMovieList from '@/hooks/useMovieList';
 import useFavorites from '@/hooks/useFavorites';
+import InfoModal from '@/components/InfoModal';
+import useInfoModal from '@/hooks/useInfoModal';
 
 //checking if available session exists. If not, redirect us to /auth.
 export async function getServerSideProps(context: NextPageContext){
@@ -28,10 +30,12 @@ export async function getServerSideProps(context: NextPageContext){
 export default function Home() {
   const { data: movies = [] } = useMovieList();
   const { data: favorites = []} = useFavorites();
+  const { isOpen, closeModal } = useInfoModal();
   //fetch user
   // const { data: user } = useCurrentUser();
   return (
     <>
+    <InfoModal visible={isOpen} onClose={closeModal} />
     <Navbar />
     <Billboard />
     <div className='pg-40'>
