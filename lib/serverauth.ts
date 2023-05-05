@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from 'next-auth';
 
-import prismadb from '../lib/prismadb';
-import { authOptions } from "../pages/api/auth/[...nextauth]";
+import prismadb from '@/lib/prismadb';
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const serverAuth = async (req: NextApiRequest, res: NextApiResponse ) => {
     //user serverAuth in API controller.
@@ -16,7 +16,7 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse ) => {
         where: {
             email: session.user.email,
         }
-    })
+    });
 
     if (!currentUser){
         throw new Error('Not Signed in');
